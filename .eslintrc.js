@@ -1,20 +1,17 @@
 module.exports = {
-    root: true,
-    env: {
-        node: true,
-    },
-    parser: 'vue-eslint-parser', // Парсер для Vue
+    parser: 'vue-eslint-parser', // Use vue-eslint-parser for Vue files
     parserOptions: {
-        parser: '@typescript-eslint/parser', // Парсер для TypeScript
-        sourceType: 'module',
-        ecmaVersion: 2020,
+        parser: '@typescript-eslint/parser', // Use @typescript-eslint/parser for TypeScript
+        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+        sourceType: 'module', // Allows for the use of imports
     },
+    plugins: ['@typescript-eslint', 'vue'], // Add 'vue' plugin
     extends: [
-        'plugin:vue/vue3-recommended', // Правила для Vue 3
         'eslint:recommended',
-        'plugin:@typescript-eslint/recommended', // Правила для TypeScript
+        'plugin:@typescript-eslint/recommended', // TypeScript rules
+        'plugin:vue/recommended', // Vue recommended rules
     ],
     rules: {
-        // Ваши кастомные правила ESLint
+        '@typescript-eslint/no-unused-vars': 'off', // Disable the rule
     },
 };

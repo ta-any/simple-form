@@ -10,7 +10,7 @@
       </button>
     </div>
 
-<!--    <AccountList />-->
+    <AccountList />
     <AccountForm
         v-if="isFormVisible"
         @add-account="handleAddAccount"
@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
 import { useAccountStore } from './stores/accountStore';
-// import AccountList from './components/AccountList.vue';
+import AccountList from './components/AccountList.vue';
 import AccountForm from "@/components/AccountForm.vue";
 
 
@@ -36,7 +36,7 @@ export default defineComponent({
   name: 'App',
   components: {
     AccountForm,
-    // AccountList,
+    AccountList,
   },
   setup() {
     const accountStore = useAccountStore();
@@ -63,4 +63,5 @@ export default defineComponent({
     };
   },
 });
+
 </script>
