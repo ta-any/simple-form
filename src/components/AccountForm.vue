@@ -87,7 +87,6 @@ export default defineComponent({
         const obj: Label = { text: item };
         newAccount.value.labels.push(obj);
       });
-      console.log("add-account", newAccount.value)
 
       emit('add-account', { ...newAccount.value });
       newAccount.value = { labels: [], type: 'LDAP', login: '', password: null };
@@ -106,6 +105,53 @@ export default defineComponent({
   },
 });
 </script>
-<style>
 
+<style scoped>
+input {
+  width: 100%;
+  border: 1px solid #ccc !important;
+}
+
+.account-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.account-header,
+.account-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 4 столбца для данных + 1 для кнопки */
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Разделитель между строками */
+}
+
+.account-header {
+  font-weight: bold;
+  background-color: #f8f9fa; /* Фон для заголовков */
+}
+
+.header-cell,
+.account-cell {
+  display: flex;
+  align-items: center;
+}
+
+.login-expanded {
+  grid-column: span 2; /* Поле "Логин" занимает две колонки */
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #dc3545; /* Цвет иконки удаления */
+}
+
+.custom-eye-icon {
+  background-color: transparent;
+  cursor: pointer;
+}
 </style>

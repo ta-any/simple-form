@@ -1,15 +1,17 @@
 <template>
   <div class="container">
-    <div class="container">
-      <p class="fs-4" @click="toggleForm">
+    <div class="container mt-2 gx-5 my-3 p-3 d-flex align-items-center gap-3">
+      <span class="fs-4" @click="toggleForm">
         {{ !isFormVisible ? 'Учетные записи' : '' }}
-      </p>
-      <button @click="toggleForm" class="btn btn-outline-secondary">
-        {{ isFormVisible ? 'Скрыть форму' : '' }}
-        <i v-if="!isFormVisible" class="bi bi-plus"></i>
+      </span>
+      <button  v-if="!isFormVisible" @click="toggleForm" class="btn btn-outline-secondary">
+        <i class="bi bi-plus"></i>
       </button>
     </div>
-
+    <div class="container mt-2 gx-5 my-3 p-3 bg-light rounded-2">
+      <i class="bi bi-exclamation-octagon-fill me-2"></i>
+      <span>Для указания нескольких меток для одной пары логин/пароль используйте разделитель ;</span>
+    </div>
     <AccountList />
     <AccountForm
         v-if="isFormVisible"
@@ -63,5 +65,9 @@ export default defineComponent({
     };
   },
 });
-
 </script>
+<style>
+p{
+  margin: 0 !important;
+}
+</style>
