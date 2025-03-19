@@ -10,7 +10,7 @@
     <ul class="list-unstyled">
       <li v-for="(account, index) in accountStore.accounts" :key="index" class="account-row">
         <div class="account-cell">
-          <input class="rounded-2 p-1" :value="account.labels.map(item => item.text).join(';') || 'Значение'">
+          <input class="rounded-2 p-1" :value="account.labels.map((item: any) => item.text).join(';') || 'Значение'">
         </div>
         <div class="account-cell">
           <select id="type" v-model="account.type" class="form-select rounded-2">
@@ -53,12 +53,10 @@ export default defineComponent({
     const accountStore = useAccountStore();
     const showPassword = ref<boolean[]>([]);
 
-    // Инициализация массива showPassword
     showPassword.value = new Array(accountStore.accounts.length).fill(false);
 
     const onDelete = (index: number): void => {
       accountStore.deleteAccount(index);
-      // Удаляем состояние видимости пароля для удаленного аккаунта
       showPassword.value.splice(index, 1);
     };
 
@@ -80,6 +78,7 @@ export default defineComponent({
 input {
   width: 100%;
   border: 1px solid #ccc !important;
+  padding: 6px 10px !important;
 }
 
 .account-table {
